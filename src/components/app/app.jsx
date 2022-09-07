@@ -14,10 +14,10 @@ class App extends Component {
         super(props)
         this.state = {
             data: [
-                {name: 'Alex K', salary: 999, increase: false, id: 1},
-                {name: 'Alex B', salary: 777, increase: true, id: 2},
-                {name: 'Alex W', salary: 222, increase: true, id: 3},
-                {name: 'Alex Q', salary: 1258, increase: false, id: 4},
+                {name: 'Alex K', salary: 999, increase: false, like: false, id: 1},
+                {name: 'Alex B', salary: 777, increase: false, like: false, id: 2},
+                {name: 'Alex W', salary: 222, increase: false, like: false, id: 3},
+                {name: 'Alex Q', salary: 1258, increase: false, like: false, id: 4},
             ]
         }
         this.maxId = 5
@@ -46,6 +46,7 @@ class App extends Component {
             name,
             salary,
             increase: false,
+            like: false,
             id: this.maxId++
         }
         console.log(newItem);
@@ -56,6 +57,45 @@ class App extends Component {
             }
         } )
     }
+
+    onToggeleIncrease = (id) => {
+        // this.setState((state) => {
+        //     const index = state.data.findIndex(elem => elem.id === id)
+
+        //     const old = state.data[index]
+        //     console.log(old);
+        //     const newItem = {...old, increase: !old.increase}
+        //     //console.log(newItem);
+        //     const newArr = [...state.data.slice(0, index), newItem, ...state.data.slice(index + 1)]
+        //     console.log(newArr);
+
+        //     return {
+        //         data: newArr
+        //     }
+        
+        // })
+
+        this.setState((state) => ({
+            data: state.data.map(item => {
+                if (item.id === id) {
+                    return{...item, increase: !item.increase}
+                }
+                return item
+            })
+        }))
+    }
+
+    onToggeleLike = (id) => {
+        this.setState((state) => ({
+            data: state.data.map(item => {
+                if (item.id === id) {
+                    return{...item, like: !item.like}
+                }
+                return item
+            })
+        }))
+    }
+
 
     render() {
         const {data} = this.state
@@ -69,7 +109,9 @@ class App extends Component {
                 </div>
                 <EmployeesList   
                     data={data}
-                    onDelete={this.deleteItem} />
+                    onDelete={this.deleteItem}
+                    onToggeleIncrease={this.onToggeleIncrease}
+                    onToggeleLike={this.onToggeleLike} />
                 <EmployeesAddForm
                     onAdd={this.addNewItem} />
             </div>
