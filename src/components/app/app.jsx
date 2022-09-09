@@ -88,8 +88,21 @@ class App extends Component {
     onToggeleLike = (id) => {
         this.setState((state) => ({
             data: state.data.map(item => {
+                console.log(item.like);
                 if (item.id === id) {
                     return{...item, like: !item.like}
+                }
+                return item
+            })
+        }))
+    }
+
+    onEditItem = (id) => {
+        console.log(`change this imput value ${id}`);
+        this.setState((state) => ({
+            data: state.data.map(item => {
+                if (item.id === id) {
+                    return{...item, salary: item.salary} //&&&
                 }
                 return item
             })
@@ -101,6 +114,7 @@ class App extends Component {
         const {data} = this.state
         const employees = data.length
         const increased = data.filter(item => item.increase).length
+        console.log(data)
 
         return (
             <div className="app">
@@ -114,7 +128,8 @@ class App extends Component {
                     data={data}
                     onDelete={this.deleteItem}
                     onToggeleIncrease={this.onToggeleIncrease}
-                    onToggeleLike={this.onToggeleLike} />
+                    onToggeleLike={this.onToggeleLike}
+                    onEditItem={this.onEditItem} />
                 <EmployeesAddForm
                     onAdd={this.addNewItem} />
             </div>

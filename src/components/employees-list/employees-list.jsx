@@ -1,7 +1,7 @@
 import EmployeesItem from '../employees-item/employees-item'
 import './employees-list.css'
 
-const EmployeesList = ({data, onDelete, onToggeleLike, onToggeleIncrease}) => {
+const EmployeesList = ({data, onDelete, onToggeleLike, onToggeleIncrease, onEditItem}) => {
 
     const elements = data.map((item, index) => {
         return (
@@ -13,7 +13,8 @@ const EmployeesList = ({data, onDelete, onToggeleLike, onToggeleIncrease}) => {
                 like={item.like}
                 onDelete={() => onDelete(item.id)}
                 onToggeleIncrease={() => onToggeleIncrease(item.id)}
-                onToggeleLike={() => onToggeleLike(item.id)} />
+                onToggeleLike={() => onToggeleLike(item.id)}
+                onEditItem={() => onEditItem(item.id)} />
         )
     })
 
