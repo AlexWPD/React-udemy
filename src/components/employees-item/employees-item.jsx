@@ -1,5 +1,9 @@
 import './employees-item.css'
 
+// в state добавить salary из пропсов
+// onChange setstate на вэлью инпута
+// забрать state наверх
+
 const EmployeesItem = ({name, salary, onDelete, onToggeleIncrease, onToggeleLike, increase, like}) => {
 
     let classNames = 'list-group-item d-flex justify-content-between';
