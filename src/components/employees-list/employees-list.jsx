@@ -14,7 +14,7 @@ const EmployeesList = ({data, onDelete, onToggeleLike, onToggeleIncrease, onEdit
                 onDelete={() => onDelete(item.id)}
                 onToggeleIncrease={() => onToggeleIncrease(item.id)}
                 onToggeleLike={() => onToggeleLike(item.id)}
-                onEditItem={() => onEditItem(item.id)} />
+                onEditItem={(salary) => onEditItem(item.id, salary)} />
         )
     })
 

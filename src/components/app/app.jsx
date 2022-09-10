@@ -97,12 +97,12 @@ class App extends Component {
         }))
     }
 
-    onEditItem = (id) => {
+    onEditItem = (id, salary) => {
         console.log(`change this imput value ${id}`);
         this.setState((state) => ({
             data: state.data.map(item => {
                 if (item.id === id) {
-                    return{...item, salary: item.salary} //&&&
+                    return{...item, salary: salary}
                 }
                 return item
             })

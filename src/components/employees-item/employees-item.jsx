@@ -2,25 +2,13 @@ import { Component } from 'react';
 import './employees-item.css'
 
 class EmployeesItem extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            salary: this.props.salary
-        }
-    }
 
-    onChangeSalary = (e) => {
-        this.setState({
-            salary: e.target.value
-        })
-
-        this.props.onEditItem()
-    }
-
+    // onChangeSalary = (e) => {
+    //     this.props.onEditItem(e.target.value)
+    // }
 
     render() {
-        const {name, onDelete, onToggeleIncrease, onToggeleLike, increase, like} = this.props
-        const {salary} = this.state
+        const {name, salary, onDelete, onToggeleIncrease, onToggeleLike, increase, like, onEditItem} = this.props
 
         let classNames = 'list-group-item d-flex justify-content-between'
 
@@ -40,7 +28,8 @@ class EmployeesItem extends Component {
                 </span>
                 <input type="text" 
                     className="list-group-item-input"
-                    onChange={this.onChangeSalary}
+                    //onChange={this.onChangeSalary}
+                    onChange={(e) => onEditItem(e.target.value)}
                     defaultValue={"$" + salary}/>
                 <div className='d-flex justify-content-center align-items-center'>
                     <button type="button"
