@@ -97,12 +97,24 @@ class App extends Component {
         }))
     }
 
-    onEditItem = (id, salary) => {
+    onEditSalary = (id, salary) => {
         console.log(`change this imput value ${id}`);
         this.setState((state) => ({
             data: state.data.map(item => {
                 if (item.id === id) {
                     return{...item, salary: salary}
+                }
+                return item
+            })
+        }))
+    }
+
+    onEditName = (id, name) => {
+        //console.log(`change this imput value ${id}`);
+        this.setState((state) => ({
+            data: state.data.map(item => {
+                if (item.id === id) {
+                    return{...item, name: name}
                 }
                 return item
             })
@@ -129,7 +141,8 @@ class App extends Component {
                     onDelete={this.deleteItem}
                     onToggeleIncrease={this.onToggeleIncrease}
                     onToggeleLike={this.onToggeleLike}
-                    onEditItem={this.onEditItem} />
+                    onEditName={this.onEditName}
+                    onEditSalary={this.onEditSalary} />
                 <EmployeesAddForm
                     onAdd={this.addNewItem} />
             </div>

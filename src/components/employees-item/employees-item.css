@@ -15,6 +15,7 @@
 }
 
 .list-group-item input {
+    max-width: 80px;
     line-height: 35px;
     font-size: 20px;
     text-align: center;
@@ -22,7 +23,6 @@
 }
 
 .list-group-item button {
-    width: 35px;
     height: 35px;
     margin: 3px;
     font-size: 17px;

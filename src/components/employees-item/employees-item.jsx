@@ -2,13 +2,35 @@ import { Component } from 'react';
 import './employees-item.css'
 
 class EmployeesItem extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: this.props.name
+        }
+    }
 
     // onChangeSalary = (e) => {
     //     this.props.onEditItem(e.target.value)
     // }
 
+    onChangeName = () => {
+        const newItemValue = prompt('Edit name')
+        console.log(newItemValue);
+
+        if (newItemValue === null || newItemValue.length === 0) {
+            alert('Ничего не ввели')
+        } else {
+            this.props.onEditName(newItemValue)
+
+            this.setState({
+                name: newItemValue
+            })
+        }
+    }
+
     render() {
-        const {name, salary, onDelete, onToggeleIncrease, onToggeleLike, increase, like, onEditItem} = this.props
+        const {salary, onDelete, onToggeleIncrease, onToggeleLike, increase, like, onEditSalary} = this.props
+        const {name} = this.state
 
         let classNames = 'list-group-item d-flex justify-content-between'
 
@@ -26,10 +48,14 @@ class EmployeesItem extends Component {
                     className="list-group-item-label"
                     onClick={onToggeleLike}>{name}
                 </span>
+                <button type="button"
+                        className="btn btn-primary"
+                        onClick={this.onChangeName} >Edit_name
+                </button>
                 <input type="text" 
                     className="list-group-item-input"
                     //onChange={this.onChangeSalary}
-                    onChange={(e) => onEditItem(e.target.value)}
+                    onChange={(e) => onEditSalary(e.target.value)}
                     defaultValue={"$" + salary}/>
                 <div className='d-flex justify-content-center align-items-center'>
                     <button type="button"
